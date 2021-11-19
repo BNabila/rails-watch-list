@@ -1,0 +1,25 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://d18lkz4dllo6v2.cloudfront.net/cumulus_uploads/entry/2019-08-21/j.jpg?w=660);">
+  <div class="container">
+    <h1>My Lists</h1>
+    <p>all my movie</p>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">My Lists</h3>
+    <%= link_to 'Create a movie list', new_list_path, class: 'btn btn-flat' %>
+  </div>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-12 col-lg-4">
+        <%= link_to list_path(list) do %>
+          <div class="card-category mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.movie_url %>)">
+            <%= list.name %>
+            <%= link_to "+", list_path(list),method: :delete, data: {confirm: "Are you sure"},class: "card-remove-link" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
